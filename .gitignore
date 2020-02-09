@@ -388,14 +388,20 @@ MigrationBackup/
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/usage.statistics.xml
+**/.idea/dictionaries
+**/.idea/shelf
+**/.idea/misc.xml
+**/.idea/projectSettingsUpdater.xml
 
 # Generated files
-.idea/**/contentModel.xml
+**/.idea/contentModel.xml
+**/.idea/encodings.xml
+**/.idea/indexLayout.xml
+*.csproj
+*.sln
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -413,15 +419,17 @@ MigrationBackup/
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
+
 # auto-import.
-# .idea/modules.xml
+**/.idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
 
 # CMake
 cmake-build-*/
+CMakeLists.txt
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
@@ -502,3 +510,4 @@ DerivedData/
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
 
 # End of https://www.gitignore.io/api/c++,xcode,rider,csharp,visualstudio,visualstudiocode
+
