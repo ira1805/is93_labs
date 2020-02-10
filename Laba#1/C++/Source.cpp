@@ -12,7 +12,7 @@ int main()
 	Counter(f3);
 	cout << f1 << " " << f2 << " " << f3 << endl;
 	int a;
-	int b;
+	int b;/*
 	cout << "Input two values for the second lessons!" << endl;
 	cin >> a >> b;
 	if (True(a, b) == true)
@@ -23,6 +23,12 @@ int main()
 	{
 		cout << "Answer for second question: NO!!!\n";
 	}
+	*/
+	cout << "Input to value for second lesson: " << endl;
+	cin >> a >> b;
+	int s = Summa_Bit(a, b);
+	cout << "Suma a and b = " << s;
+	cout << endl;
 	system("pause");
 	return 0;
 }
