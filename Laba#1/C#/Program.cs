@@ -27,30 +27,30 @@ namespace Лабораторна_робота__1_C_
 		static int Summa_Bit(int a, int b)
 		{
 			int Ai, Bi; int s = 0, k = 0;
-			for (int mask = 0; mask <= sizeof(int) * 8 - 1; mask++)
+			for (int mask = 0; mask < sizeof(int) * 8 - 1; mask++)
 			{
-				Ai = a & (1 << mask);
-				Bi = b & (1 << mask);
-				if (mask < 16)
+				Ai = (a & (1 << mask));
+				Bi = (b & (1 << mask));
+				if (Ai != 0) { Ai = 1; }
+				if (Bi != 0) { Bi = 1; }
+				if (Ai + Bi + k == 1)
 				{
-					if (Ai + Bi + k == 1)
-					{
-						s = s | (1 << mask);
-						k = 0;
-					}
-					else
-					{
-						if (Ai + Bi + k != 0)
-						{
-							k = 1;
-						}
-					}
+					s = s | (1 << mask);
+					k = 0;
 				}
 				else
 				{
-					if (Ai + Bi >= 1)
+					if (Ai + Bi + k == 2)
 					{
-						s = s | (1 << mask);
+						k = 1;
+					}
+					else
+					{
+						if (Ai + Bi + k > 2)
+						{
+							k = 1;
+							s = s | (1 << mask);
+						}
 					}
 				}
 				Ai = 0;
@@ -102,6 +102,8 @@ namespace Лабораторна_робота__1_C_
 				Console.WriteLine("A<B ? \n Answer: No!");
 			}
 			Console.WriteLine("Input the 2 values for sum");
+			a = 0;
+			b = 0;
 			a = Convert.ToInt32(Console.ReadLine());
 			b = Convert.ToInt32(Console.ReadLine());
 			int s = Summa_Bit(a, b);
