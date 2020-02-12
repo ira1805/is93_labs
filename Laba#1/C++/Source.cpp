@@ -27,7 +27,7 @@ int main()
 	cout << "Input to value for second lesson: " << endl;
 	cin >> a >> b;
 	int s = Summa_Bit(a, b);
-	cout << "Suma a and b = " << s;
+	cout << "Suma (a and b) = " << s;
 	cout << endl;
 	system("pause");
 	return 0;
