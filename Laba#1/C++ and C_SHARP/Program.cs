@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Лабораторна_робота__1_C_
+namespace C_Sharp
 {
-    class Program
+	class Program
     {
 		static void Counter(ref int a)
 		{
@@ -58,9 +58,9 @@ namespace Лабораторна_робота__1_C_
 			}
 			return s;
 		}
-		static bool True(int a, int b)
+		/*static bool True(int a, int b)
 		{
-			bool flag =false;
+			bool flag = false;
 			int Ai, Bi;
 			for (int mask = sizeof(int) * 8 - 1; mask >= 0; mask--)
 			{
@@ -79,7 +79,7 @@ namespace Лабораторна_робота__1_C_
 				}
 			}
 			return flag;
-		}
+		}*/
 		static void Main(string[] args)
         {
 			int value1;
@@ -87,13 +87,10 @@ namespace Лабораторна_робота__1_C_
 			value1 = int.Parse(Console.ReadLine());
 			Counter(ref value1);
 			Console.WriteLine("New value = " + value1.ToString());
-			int a, b;
-			Console.WriteLine("Input values a and b  for second lesson: ");
-			Console.WriteLine("Input A: ");
-			a = Convert.ToInt32(Console.ReadLine());
+			/*a = Convert.ToInt32(Console.ReadLine());
 			Console.WriteLine("Input B: ");
 			b = Convert.ToInt32(Console.ReadLine());
-			if(True(a, b)== true)
+			if (True(a, b) == true)
 			{
 				Console.WriteLine("A<B ? \n Answer: Yes!");
 			}
@@ -102,9 +99,12 @@ namespace Лабораторна_робота__1_C_
 				Console.WriteLine("A<B ? \n Answer: No!");
 			}
 			Console.WriteLine("Input the 2 values for sum");
-			a = 0;
-			b = 0;
+			*/
+			int a, b;
+			Console.WriteLine("Input values a and b  for second lesson: ");
+			Console.WriteLine("Input A: ");
 			a = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("Input B: ");
 			b = Convert.ToInt32(Console.ReadLine());
 			int s = Summa_Bit(a, b);
 			Console.WriteLine("Suma a and b = " + s);

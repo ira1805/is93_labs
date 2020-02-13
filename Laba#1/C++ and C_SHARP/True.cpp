@@ -18,7 +18,7 @@ namespace New
 				}
 		}
 	}
-	bool True(int a, int b)
+	/*bool True(int a, int b)
 	{
 		bool flag = true;
 		int Ai, Bi;
@@ -42,6 +42,7 @@ namespace New
 		}
 		return flag;
 	}
+	*/
 	int Summa_Bit(int a, int b)
 	{
 		int Ai, Bi; int s = 0, k = 0;
