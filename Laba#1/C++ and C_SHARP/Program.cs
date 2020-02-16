@@ -13,8 +13,9 @@ namespace C_Sharp
 			int Ai;
 			for (int mask = 0; mask < sizeof(int) * 8 - 1; mask++)
 			{
-				Ai = a & (1 << mask);
-				if (Ai == 0)
+				Ai = (a & (1 << mask));
+				if (Ai != 0) { Ai = 1; }
+				if (Ai == 1)
 				{
 					for (int i = 0; i < mask + 1; i++)
 					{
@@ -58,28 +59,6 @@ namespace C_Sharp
 			}
 			return s;
 		}
-		/*static bool True(int a, int b)
-		{
-			bool flag = false;
-			int Ai, Bi;
-			for (int mask = sizeof(int) * 8 - 1; mask >= 0; mask--)
-			{
-				Ai = a & (1 << mask);
-				Bi = b & (1 << mask);
-				if (Ai < Bi)
-				{
-					flag = true;
-					break;
-				}
-				else
-					if (Ai > Bi)
-				{
-					flag = false;
-					break;
-				}
-			}
-			return flag;
-		}*/
 		static void Main(string[] args)
         {
 			int value1;
@@ -87,19 +66,6 @@ namespace C_Sharp
 			value1 = int.Parse(Console.ReadLine());
 			Counter(ref value1);
 			Console.WriteLine("New value = " + value1.ToString());
-			/*a = Convert.ToInt32(Console.ReadLine());
-			Console.WriteLine("Input B: ");
-			b = Convert.ToInt32(Console.ReadLine());
-			if (True(a, b) == true)
-			{
-				Console.WriteLine("A<B ? \n Answer: Yes!");
-			}
-			else
-			{
-				Console.WriteLine("A<B ? \n Answer: No!");
-			}
-			Console.WriteLine("Input the 2 values for sum");
-			*/
 			int a, b;
 			Console.WriteLine("Input values a and b  for second lesson: ");
 			Console.WriteLine("Input A: ");

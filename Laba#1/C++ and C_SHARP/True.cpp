@@ -7,8 +7,8 @@ namespace New
 		int Ai;
 		for (int mask = 0; mask < sizeof(int) * 8 - 1; mask++)
 		{
-			Ai = a & (1 << mask);
-				if (Ai == 0)
+			Ai = (a & (1 << mask)) ? 1 : 0;
+				if (Ai == 1)
 				{
 					for (int i = 0; i < mask+1; i++)
 					{
@@ -18,31 +18,6 @@ namespace New
 				}
 		}
 	}
-	/*bool True(int a, int b)
-	{
-		bool flag = true;
-		int Ai, Bi;
-		for (int mask = sizeof(int)*8-1; mask>=0; mask--)
-		{
-			Ai = a & (1 << mask);
-			Bi = b & (1 << mask);
-			if (Ai < Bi)
-			{
-				flag = true;
-				break;
-			}
-			else
-				if (Ai > Bi)
-				{
-					flag = false;
-					break;
-				}
-			Ai = 0;
-			Bi = 0;
-		}
-		return flag;
-	}
-	*/
 	int Summa_Bit(int a, int b)
 	{
 		int Ai, Bi; int s = 0, k = 0;

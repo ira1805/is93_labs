@@ -14,8 +14,7 @@ int main()
 	cout << "Input to value for second lesson: " << endl;
 	cin >> a >> b;
 	int s = Summa_Bit(a, b);
-	cout << "Suma=" << s;
-	cout << endl;
+	cout << "Suma = " << s << endl;
 	system("pause");
 	return 0;
 }
