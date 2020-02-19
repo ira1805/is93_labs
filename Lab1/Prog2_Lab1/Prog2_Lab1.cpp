@@ -26,6 +26,7 @@ int main()
 void plus_one(int &a) {
     for (int i = 0; i <= 15; i++) {
         int bit = a & (1 << i);
+        cout << bit << " ";
         a ^= (1 << i);
         cout << a << "\n";
         if (bit == 0) { return; }
@@ -41,7 +42,7 @@ bool lesser_than(int a, int b) {
         for (int i = 14; i >= 0; i--) {
             bitA = (a >> i) & 1;
             bitB = (b >> i) & 1;
-            cout << bitA << bitB << (bitA & bitB) << "\n";
+            cout << bitA << bitB << (bitA ^ bitB) << "\n";
             if (bitA != bitB)
                 return bitB;
         }

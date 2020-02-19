@@ -9,8 +9,9 @@ namespace Prog2_Lab1_Cs
             for (int i = 0; i <= 31; i++)
             {
                 int bit = a & (1 << i);
+                Console.Write(bit + " ");
                 a ^= (1 << i);
-                // Console.WriteLine(a);
+                Console.WriteLine(a);
                 if (bit == 0) { return; }
             }
         }
@@ -25,6 +26,7 @@ namespace Prog2_Lab1_Cs
                 {
                     bitA = (a >> i) & 1;
                     bitB = (b >> i) & 1;
+                    Console.WriteLine(bitA + " " + bitB + " " + (bitA ^ bitB));
                     if (bitA != bitB)
                         return Convert.ToBoolean(bitB);
                 }
