@@ -34,7 +34,7 @@ namespace Prog2_Lab1_Cs
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Стеблянко Олександр, Лабораторна 4, Завдання 25 \n");
+            Console.WriteLine("Стеблянко Олександр, Лабораторна 1, Завдання 9 \n");
 
             int firstnum, secnum, thirdnum;
             Console.Write("Введите число для операції +1: ");
@@ -48,6 +48,7 @@ namespace Prog2_Lab1_Cs
             thirdnum = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Відношення <: " + lesser_than(secnum,
                                                              thirdnum));
+        
         }
     }
 }

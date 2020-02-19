@@ -8,7 +8,7 @@ bool lesser_than(int a, int b);
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    cout << "Стеблянко Олександр, Лабораторна 4, Завдання 25 \n \n";
+    cout << "Стеблянко Олександр, Лабораторна 1, Завдання 9 \n \n";
 
     int firstnum, secnum, thirdnum;
     cout << "Введите число для операції +1: ";
