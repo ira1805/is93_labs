@@ -56,6 +56,7 @@ int main() {
     int resultOfSum = 0;
     string result;
 
+    cout << "IS-93 Kravchenko Olena"<< endl;
     cout << "Enter first number: ";  // Enter data
     cin >> number1;
     cout << "Enter second number: ";
