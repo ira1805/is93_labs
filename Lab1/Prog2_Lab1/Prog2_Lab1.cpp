@@ -7,13 +7,14 @@ bool lesser_than(int a, int b);
 
 int main()
 {
-    
     setlocale(LC_ALL, "Russian");
+    cout << "Стеблянко Олександр, Лабораторна 4, Завдання 25 \n \n";
+
     int firstnum, secnum, thirdnum;
     cout << "Введите число для операції +1: ";
     cin >> firstnum;
     plus_one(firstnum);
-    cout << firstnum;
+    cout << "Результат +1: " << firstnum << "\n";
     
     cout << "Введите перше число для операції <: ";
     cin >> secnum;
@@ -23,12 +24,11 @@ int main()
 }
 
 void plus_one(int &a) {
-    int sign = a >> 15;
     for (int i = 0; i <= 15; i++) {
         int bit = a & (1 << i);
         a ^= (1 << i);
-        // cout << a << "\n";
-        if ((sign == -1 && bit == (1 << i)) || (sign == 0 && bit == 0)) { return; }
+        cout << a << "\n";
+        if (bit == 0) { return; }
     }
 }
 
@@ -41,6 +41,7 @@ bool lesser_than(int a, int b) {
         for (int i = 14; i >= 0; i--) {
             bitA = (a >> i) & 1;
             bitB = (b >> i) & 1;
+            cout << bitA << bitB << (bitA & bitB) << "\n";
             if (bitA != bitB)
                 return bitB;
         }

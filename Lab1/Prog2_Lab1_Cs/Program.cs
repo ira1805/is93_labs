@@ -6,13 +6,12 @@ namespace Prog2_Lab1_Cs
     {
         static void plus_one(ref int a)
         {
-            int sign = a >> 31;
             for (int i = 0; i <= 31; i++)
             {
                 int bit = a & (1 << i);
                 a ^= (1 << i);
                 // Console.WriteLine(a);
-                if ((sign == -1 && bit == (1 << i)) || (sign == 0 && bit == 0)) { return; }
+                if (bit == 0) { return; }
             }
         }
         static bool lesser_than(int a, int b)
@@ -33,6 +32,8 @@ namespace Prog2_Lab1_Cs
         }
         static void Main(string[] args)
         {
+            Console.WriteLine("Стеблянко Олександр, Лабораторна 4, Завдання 25 \n");
+
             int firstnum, secnum, thirdnum;
             Console.Write("Введите число для операції +1: ");
             firstnum = Convert.ToInt32(Console.ReadLine());
