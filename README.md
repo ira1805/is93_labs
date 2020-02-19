@@ -1,1 +1,3 @@
-Repository of the IS-93 group with laboratory works
+LABS are available here:
+
+https://github.com/Fallgregg/LabsOOP
