@@ -11,7 +11,7 @@ using System;
             Console.WriteLine();
 
             Console.Write("Введіть першу цифру для порівняння: ");
-            int number_1 = Convert.ToInt32(Console.ReadLine());
+           int number_1 = Convert.ToInt32(Console.ReadLine());
 			      Console.Write("Введіть другу цифру для порівняння: ");
 		      	int number_2 = Convert.ToInt32(Console.ReadLine());
 
@@ -23,14 +23,14 @@ using System;
         }
 static void Zmenshenya(ref int num)
 {
-int num_i;
+int num_zmensh;
 if(num == 0)
 num = -1;
 else if (num != 0)
    for (int temp = 0; temp < sizeof(int) * 8 - 1; temp++)
       {
-        num_i = num & (1 << temp);
-       if (num_i > 0)
+        num_zmensh = num & (1 << temp);
+       if (num_zmensh > 0)
                 {
                   for (int i = 0; i < temp + 1; i++)
                   num = num ^ (1 << i);
@@ -44,20 +44,20 @@ static bool Porivnianya(int number_1, int number_2)
       bool flag = false;
       int a, b;
       for (int temp = sizeof(int) * 8 - 1; temp >= 0; temp--)
-            {
-                a = number_1 & (1 << temp);
-                b = number_2 & (1 << temp);
-                if (a < b)
-                {
-                    flag = false;
-                    break;
-                }
-                else if (a > b)
-                {
-                    flag = true;
-                    break;
-                }
-            }
-            return flag;
-        }
+      {
+       a = number_1 & (1 << temp);
+      b = number_2 & (1 << temp);
+      if (a < b)
+      {
+        flag = false;
+        break;
+      }
+      else if (a > b)
+      {
+        flag = true;
+        break;
+      }
     }
+  return flag;
+ }
+}
