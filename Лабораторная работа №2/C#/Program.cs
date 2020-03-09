@@ -10,7 +10,7 @@ namespace Laba_2_C_Sharp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)//Main function
         {
 			Console.WriteLine("Samilenko Oleksandr Maksimovich IS-93");
 			int n;
@@ -57,7 +57,7 @@ namespace Laba_2_C_Sharp
 				}
 			}
 		}
-		static MyString inputString(int n)//
+		/*static MyString inputString(int n)//Input the string
 		{
 			Console.Write("Enter your string: ");
 			char[] input = new char[n];
@@ -71,8 +71,8 @@ namespace Laba_2_C_Sharp
 			Console.WriteLine();
 
 			return new MyString(input);
-		}
-		static void Menu()
+		}*/
+		static void Menu()//Output the menu
 		{
 			Console.WriteLine("Menu:");
 			Console.WriteLine("1.Добавить строку.\n2.Удалить строку.");

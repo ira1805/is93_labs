@@ -14,7 +14,7 @@ namespace StringLibrary
 		{
 			arrgs = line;
 		}
-		public int СharCount(MyString arr, char c)
+		public int СharCount(MyString arr, char c)// Find noumber one char in one sentencense
 		{
 			int k = 0;
 			for (int j = 0; j < arr.count; j++)
@@ -26,7 +26,7 @@ namespace StringLibrary
 			}
 			return k;
 		}
-		public void outputString()
+		public void outputString()//Output the text on console
 		{
 			for (int i = 0; i < arrgs.Length; i++)
 			{
@@ -35,7 +35,7 @@ namespace StringLibrary
 				Console.Write(arrgs[i]);
 			}
 		}
-		public void GetStr(char[] arr)
+		public void GetStr(char[] arr)// Get the string from our console
 		{
 			arrgs = arr;
 			for (int i = 0; i < 1000; i++)
@@ -45,7 +45,7 @@ namespace StringLibrary
 				count++;
 			}
 		}
-		~MyString()
+		~MyString()// Distructor MyString
 		{
 		}
 	}

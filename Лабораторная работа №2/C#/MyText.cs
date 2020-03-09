@@ -11,11 +11,11 @@ namespace TextLibrary
     {
 		public int count;
 		public MyString[] arrgs = new MyString[100];
-		public void AddStr_2(MyString text)
+		public void AddStr_2(MyString text//Add the string
 		{
 			arrgs[count++] = text;
 		}
-		public void DeleteStr_2(int a)
+		public void DeleteStr_2(int a)//Delete the string
 		{
 			for (int i = a - 1; i < count; i++)
 			{
@@ -23,7 +23,7 @@ namespace TextLibrary
 			}
 			count--;
 		}
-		public void DeleteText_2()
+		public void DeleteText_2()// Erase all the text
 		{
 			for (int i = 0; i < count; i++)
 			{
@@ -31,7 +31,7 @@ namespace TextLibrary
 			}
 			count = 0;
 		}
-		public void MinStr_2(char[] a)
+		public void MinStr_2(char[] a)// Find min string
 		{
 			int min = arrgs[0].count;
 			int i_m = 0;
@@ -50,7 +50,7 @@ namespace TextLibrary
 				i_2++;
 			}
 		}
-		public void FirstChars_2(char[] a)
+		public void FirstChars_2(char[] a)//Find string of fisrsts chars each sentencense
 		{
 			int j = 0;
 			for (int i = 0; i < count; i++)
@@ -59,7 +59,7 @@ namespace TextLibrary
 				j++;
 			}
 		}
-		public int CharCountInTextAndStr_2(char c)
+		public int CharCountInTextAndStr_2(char c)// Find noumber one char in each sentencense
 		{
 			int s = 0;
 			for (int i = 0; i < count; i++)
