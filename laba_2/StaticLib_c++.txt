@@ -1,0 +1,261 @@
+// StaticLib1.cpp : Определяет функции для статической библиотеки.
+
+#include "pch.h" // это всегда идет первым
+#include "StaticLib1.h"
+#include <stdexcept>
+#include "framework.h"
+#include <iostream>
+#include <windows.h>
+#include <ctype.h>
+#include <conio.h>
+#include <string.h> 
+
+using namespace std;
+
+//реализация конструктора
+TString::TString(char* init_s)
+{
+	unsigned int i = 0;
+	while (i < strlen(init_s))
+	{
+		s[i] = init_s[i];
+		i++;
+	}
+
+	s[i] = '\0'; //символ конца строки
+}
+//-----------------------------------------------------
+
+//установить значение строки
+void TString::setString(char* init_s)
+{
+	unsigned int i = 0;
+	while (i < strlen(init_s))
+	{
+		s[i] = init_s[i];
+		i++;
+	}
+
+	s[i] = '\0'; //символ конца строки
+}
+//-----------------------------------------------------
+
+//получение значения строки
+char* TString::getString()
+{
+	return s;
+}
+//-----------------------------------------------------
+
+//возвращает длину строки
+int TString::getLenght()
+{
+	return strlen(s);
+}
+//-----------------------------------------------------
+
+//приведение к верхнему регистру
+//в данном случае преобразуется только первая (латинская) часть ASCII-таблицы
+//если нужно преобразовывать национальные алфавиты, то нужно применять более сложные строковые структуры
+//в задании такая задача не ставилась
+void TString::ToUpper()
+{
+	for (int i = 0; i < getLenght(); i++) //по всем сиволам строки
+		s[i] = toupper(s[i]);            //преобразуем к верхнему регистру
+}
+//-----------------------------------------------------
+//------------------------------------------------------------
+
+//конструктор
+TText::TText()
+{
+	TotalString = 0;
+	CurrentString = 0;
+	CurrentStringPointer = NULL;
+	EndOfText = true;
+}
+//---------------------------------------------------
+
+//добавление объекта строки в конец текста
+void TText::AddString(char* NewString)
+{
+	//проверяем предельный объем текста
+	if (TotalString + 1 > maxtextlen)
+	{
+		cout << "Превышен лимит строк в тексте.\n Строка не добавлена." << endl;
+		return;
+	}
+
+	TotalString++;   //увеличиваем текущее количество существующих строк в тексте
+
+	text[TotalString - 1] = new TString(NewString);  //создаем объект новой строки
+
+	CurrentString = TotalString - 1;      //индекс текущей обрабатываемой строки в тексте
+	CurrentStringPointer = text[CurrentString];  //указатель на текущий объект строки в тексте
+}
+//--------------------------------------------------
+
+//перйти на первую строку в тексте
+void TText::MoveFirst()
+{
+	if (TotalString == 0) //если в тексте нет строк
+	{
+		CurrentString = 0;
+		CurrentStringPointer = NULL;
+		EndOfText = true;
+	}
+	else
+	{
+		CurrentString = 0;
+		CurrentStringPointer = text[0];
+		EndOfText = false;
+	}
+}
+//---------------------------------------------------
+
+//перйти на следующую строку в тексте
+void TText::MoveNext()
+{
+	//проверяем окончание массива текста
+	if (CurrentString + 1 == TotalString)
+	{
+		EndOfText = true;
+		return;
+	}
+
+	CurrentString++;
+	CurrentStringPointer = text[CurrentString];
+}
+//----------------------------------------------------
+
+
+int TText::GetTotalString()
+{
+	return TotalString;
+}
+//----------------------------------------------------
+
+//возвращает указатель на весь текст, на весь массив указателей на строки
+TString* TText::GetText()
+{
+	return *text;
+}
+//----------------------------------------------------
+
+ //возвращает указатель на текущую строку
+TString* TText::GetCurrentStringPointer()
+{
+	return CurrentStringPointer;
+}
+//----------------------------------------------------
+//----------------------------------------------------
+
+//возвращает признак окончания массива строк
+bool TText::IsEndOfText()
+{
+	return EndOfText;
+}
+//----------------------------------------------------
+
+//удаление объекта строки с заданным индесом из текста
+void TText::DeleteString(int index)
+{
+	//проверка пределов индекса	
+	if (index > TotalString - 1)
+	{
+		cout << "Задан индекс несуществующей строки.\nНевозможно удалить строку." << endl;
+		return;
+	}
+
+	MoveFirst();  //устанавливаемся на первую строку
+
+	if (index + 1 == TotalString) //если удаляется последняя строка
+		EndOfText = true;
+
+	delete(text[index]);  //удалить строку	
+
+	int i = index;
+	while (!IsEndOfText()) //сдвинуть нижние строки вверх на свободное место
+	{
+		text[i] = text[i + 1];
+		i++;
+		MoveNext();
+	}
+
+	TotalString--;  //уменьшаем общее количество строк
+	MoveFirst();    //устанавливаемся на первую строку
+}
+//----------------------------------------------------
+
+//полная очистка всего текста
+void TText::ClearText()
+{
+	MoveFirst();  //устанавливаемся на первую строку
+	while (GetTotalString() != 0) //пока еще остались строки в тексте
+		DeleteString(0);         //все время удаляем первую строку
+}
+//----------------------------------------------------
+
+//приведение всего текста к верхнему регистру
+void TText::TextToUper()
+{
+	MoveFirst();	       //устанавливаемся на первую строку в тексте
+	while (!IsEndOfText())  //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		GetCurrentStringPointer()->ToUpper();
+		MoveNext();
+	}
+}
+//----------------------------------------------------
+
+//сравнивает заданную строку со строкой текста с индексом index
+bool TText::EqualString(int index, char* str)
+{
+	if (strcmp(text[index]->getString(), str) == 0)
+		return true;
+	else
+		return false;
+}
+//----------------------------------------------------
+
+//поиск заданной строки в тексте. возвращает количество найденных строк
+int TText::FindString(char* str)
+{
+	int counter = 0;
+	int index = 0;
+	MoveFirst();	       //устанавливаемся на первую строку в тексте
+	while (!IsEndOfText())  //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		if (EqualString(index, str)) //если строки равны, то увеличиваем счетчик
+			counter++;
+
+		MoveNext();
+		index++;
+	}
+
+	return counter;
+}
+//---------------------------------------------------
+
+//удаление всех строк заданной длины
+void TText::DeleteStringsForLength(int Len)
+{
+	int index = 0;
+	MoveFirst();	       //устанавливаемся на первую строку в тексте
+	while (!IsEndOfText())  //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		if (strlen(text[index]->getString()) == Len) //если длина строки совпадает
+		{
+			DeleteString(index);  //удаляем эту строку
+			MoveFirst();	       //устанавливаемся на первую строку в тексте
+			index = 0;
+		}
+		else
+		{
+			MoveNext();
+			index++;
+		}
+	}
+}
+
+//----------------------------------------------------

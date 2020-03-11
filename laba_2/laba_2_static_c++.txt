@@ -1,0 +1,90 @@
+// lab_2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include <windows.h>
+#include "StaticLib1.h"
+
+using namespace std;
+
+int main()
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
+	cout << "          Добавление строк в текст" << endl;
+	TText my_text; //создаем объект текста
+	char tmp1[] = "Sport plays a big role in our life.";
+	my_text.AddString(tmp1);             //добавляем строку
+	char tmp2[] = "Many people do sport in our country.";
+	my_text.AddString(tmp2);          //добавляем строку
+	char tmp3[] = "They want to stay healthy.";
+	my_text.AddString(tmp3);              //добавляем строку
+	char tmp4[] = "Sport is a good mean of struggling with stress.";
+	my_text.AddString(tmp4);  //добавляем строку
+	char tmp5[] = "In my opinion sport is important for healthy free time.";
+	my_text.AddString(tmp5);  //добавляем строку
+	char tmp6[] = "Sport also makes people strong and prepares a lot of joy.";
+	my_text.AddString(tmp6);  //добавляем строку
+	char tmp7[] = "Sport plays a big role in our life.";
+	my_text.AddString(tmp7);             //добавляем строку
+	char tmp8[] = "They want to stay healthy.";
+	my_text.AddString(tmp8);
+
+	my_text.MoveFirst();	      //устанавливаемся на первую строку в тексте
+	while (!my_text.IsEndOfText()) //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		cout << my_text.GetCurrentStringPointer()->getString() << endl; //выводим текст на экран
+		my_text.MoveNext();               //переходим к следующей строке
+	}
+
+	//поиск заданной строки в тексте
+	cout << endl << "           Поиск заданной строки в тексте" << endl;
+	char s1[] = "They want to stay healthy.";
+	cout << "Задана строка - " << s1 << endl;
+	cout << "Найдено совпадений - " << my_text.FindString(s1) << endl;
+
+	//приведение текста к верхнему регистру
+	cout << '\n' << "         Приведение текста к верхнему регистру" << endl;
+	my_text.TextToUper();
+	my_text.MoveFirst();	      //устанавливаемся на первую строку в тексте
+	while (!my_text.IsEndOfText()) //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		cout << my_text.GetCurrentStringPointer()->getString() << endl; //выводим текст на экран
+		my_text.MoveNext();               //переходим к следующей строке
+	}
+
+
+	//удаление всех строк заданной длины
+	cout << '\n' << "         Удаление всех строк заданной длины - 36 символов." << endl;
+	my_text.DeleteStringsForLength(36);
+	my_text.MoveFirst();	      //устанавливаемся на первую строку в тексте
+	while (!my_text.IsEndOfText()) //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		cout << my_text.GetCurrentStringPointer()->getString() << endl; //выводим текст на экран
+		my_text.MoveNext();               //переходим к следующей строке
+	}
+
+	//удаление строки с индексом 2, номер 3
+	cout << '\n' << "         Текст после удаления строки с индексом - 2" << endl;
+	my_text.DeleteString(2);
+	my_text.MoveFirst();	      //устанавливаемся на первую строку в тексте
+	while (!my_text.IsEndOfText()) //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		cout << my_text.GetCurrentStringPointer()->getString() << endl; //выводим текст на экран
+		my_text.MoveNext();               //переходим к следующей строке
+	}
+
+	//полная очистка текста
+	cout << '\n' << "         Текст после полной очистки" << endl;
+	my_text.ClearText();          //очищаем весь текст
+	my_text.MoveFirst();	      //устанавливаемся на первую строку в тексте
+	while (!my_text.IsEndOfText()) //делаем цикл по всем строкам текста с проверкой конца массива
+	{
+		cout << my_text.GetCurrentStringPointer()->getString() << endl; //выводим текст на экран
+		my_text.MoveNext();               //переходим к следующей строке
+	}
+
+
+    system("pause");
+}
