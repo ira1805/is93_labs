@@ -1,41 +1,37 @@
 #include <iostream>
+#include "libruary_cpp/MyBasicStringTemplate.hpp"
+#include "libruary_cpp/MyContainerTemplate.hpp"
 
-using namespace std;
-
-void increase(int* x) {
-	int bit = 1, counter = 0;
-	while (bit != 0) {
-		bit = (*x >> counter) & 1;
-		*x ^= 1 << counter;
-		counter++;
-	}
-}
-
-bool compare(int a, int b) {
-	int bitA = (a >> 15) & 1, bitB = (b >> 15) & 1;
-	if (bitA == 0 && bitB == 1)
-		return 1;
-	else if (bitA == 1 && bitB == 0)
-		return 0;
-	else
-		for (int i = 14; i >= 0; i--) {
-			bitA = (a >> i) & 1;
-			bitB = (b >> i) & 1;
-			cout << bitA << " " << bitB << endl;
-			if (bitA != bitB && bitA == 1)
-				return 1;
-			else if (bitA != bitB)
-				return 0;
+int main() {
+	MyContainer<MyString> c({
+		MyString("Baranov Dmytro IS-93"),
+		MyString("1. First line"),
+		MyString("2. Second line")
+		});
+	std::cout << "Baranov Dmytro IS-93" << "\n" << "1 to add line" << "\n" << "2 to remove line" << "\n" << "3 to replace line" << "\n" << "4 to clear" << "\n" << "5 to get line amount" << "\n" << "6 to get numbers" << "\n" << "\n";
+	int x = 0;
+	for (auto i = 0; i < 10; i++) {
+		std::cin >> x;
+		if (x == 1) {
+			c.push_back("3. Third line");
+			std::cout << c << "\n";
 		}
-	return 0;
-}
-
-void main() {
-	cout << "Baranov Dmytro, IS-93" << endl;
-	int a = 25, b = -9, c = 5;
-	increase(&a);
-	cout << a << endl << endl;
-	bool res = compare(b, c);
-	cout << res << endl;
+		if (x == 2) {
+			c.erase(1);
+			std::cout << c << "\n";
+		}
+		if (x == 3) {
+			c.replace(1, MyString("line that was replaced"));
+			std::cout << c << "\n";
+		}
+		if (x == 4) {
+			c.clear();
+			std::cout << c << "\n";
+		}
+		if (x == 5)
+			std::cout << c.count() << "\n" << "\n";
+		if (x == 6)
+			std::cout << c.give_me_all_the_symbols_for_fucks_sake_but_numbers_only() << "\n" << "\n";
+	}
 	system("pause");
 }
