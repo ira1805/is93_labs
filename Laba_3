@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+
+namespace Лаба_3_ООП
+{
+    class Two_dimensional_array
+    {
+        private List<char[]> massive; //масив символів дво
+        public int number_of_golosn = 0; // кількість голосних в масиві
+        public Two_dimensional_array(string[] str)
+        {
+            massive = new List<char[]>(str.Length);
+            for (int i = 0; i < str.Length; i++)
+            {
+                massive.Add(str[i].ToCharArray());
+            }
+        }
+        //індексатор 
+        public string this[int index]
+        {
+            get
+            {
+                int i = 0;
+                string row = "";//пуста строка для заповнення діагонально
+                foreach (char[] raw in massive)
+                {
+                        row += raw[i];
+                        i++;
+                }
+                return row;
+            }
+            set
+            {
+                massive[index] = value.ToCharArray();
+            }
+        }
+        public int Golosni
+        {
+            get
+            {
+                char[] letters = {'e','y','u','i','o','a', 'E', 'Y', 'U', 'I', 'O', 'A' };
+                //бігаєм по рядкам в масиві
+                foreach (char[] row in massive)
+                {
+                    // бігаєм по символам в рядку
+                    foreach (char symb in row)
+                    {
+                        //перебираєм для голосних
+                        foreach (char letter in letters)
+                        {
+                            if (symb ==letter)
+                            {
+                                number_of_golosn++;//к-сть голосних
+                            }
+                        }
+                    }
+                }
+                return number_of_golosn;
+            }
+            set
+            {
+                number_of_golosn = value;
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter rows with space bar: ");
+            string[] text = Console.ReadLine().Split();
+
+            Two_dimensional_array Result = new Two_dimensional_array(text);
+
+            Console.WriteLine("Our row : " + Result[0]);//вивід рядка
+
+            int number_of_Golosn = Result.Golosni;
+            Console.WriteLine("The number of golosn: " + number_of_Golosn);
+            Console.ReadKey();
+
+        }
+    }
+}
