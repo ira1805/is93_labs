@@ -400,8 +400,6 @@ MigrationBackup/
 **/.idea/contentModel.xml
 **/.idea/encodings.xml
 **/.idea/indexLayout.xml
-*.csproj
-*.sln
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
