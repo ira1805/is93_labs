@@ -7,7 +7,9 @@ namespace Prog2_Lab3
     {
         static void Main(string[] args)
         {
-            SymbolMatrix sym = new SymbolMatrix(new string[2] { "Hello world", "This is a 2d array" }); // Демонстрація конструктора
+            Console.WriteLine("Стеблянко Олександр, Лабораторна 3, Завдання 9 \n");
+			
+			SymbolMatrix sym = new SymbolMatrix(new string[2] { "Hello world", "This is a 2d array" }); // Демонстрація конструктора
             WriteOut(sym);
             Console.WriteLine();
 
