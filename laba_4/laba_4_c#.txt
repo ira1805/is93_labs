@@ -1,0 +1,155 @@
+#Sokolnytska_Ann
+using System;
+
+namespace лаба4_с_шарп_2_
+{
+	public class TOtr
+	{
+		private double x1;
+		private double y1;
+		private double x2;
+		private double y2;
+		private double L;
+
+		public TOtr()
+		{
+		}
+		public TOtr(double x1init, double y1init, double x2init, double y2init)
+		{
+			x1 = x1init;
+			y1 = y1init;
+			x2 = x2init;
+			y2 = y2init;
+			L = 0;
+		}
+
+		public TOtr(TOtr Otr)
+		{
+			x1 = Otr.getX1();
+			y1 = Otr.getY1();
+			x2 = Otr.getX2();
+			y2 = Otr.getY2();
+			L = Otr.getLength();
+		}
+
+		public double getLength()
+		{
+			L = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+			return L;
+		}
+
+		public double getX1()
+		{
+			return x1;
+		}
+
+		public double getX2()
+		{
+			return x2;
+		}
+
+		public double getY1()
+		{
+			return y1;
+		}
+
+		public double getY2()
+		{
+			return y2;
+		}
+
+
+		//перегрузка оператора умножения
+		public static TOtr operator *(TOtr ImpliedObject, double m)
+		{
+			double a = Math.Atan((ImpliedObject.y2 - ImpliedObject.y1) / (ImpliedObject.x2 - ImpliedObject.x1));
+			ImpliedObject.x2 = ImpliedObject.L * m * Math.Cos(a) + ImpliedObject.x1;
+			ImpliedObject.y2 = ImpliedObject.L * m * Math.Sin(a) + ImpliedObject.y1;
+			ImpliedObject.L = Math.Sqrt((ImpliedObject.x2 - ImpliedObject.x1) * (ImpliedObject.x2 - ImpliedObject.x1) + (ImpliedObject.y2 - ImpliedObject.y1) * (ImpliedObject.y2 - ImpliedObject.y1));
+			return ImpliedObject; //возвращаем результат как указатель на самого себя
+		}
+
+
+		//перегрузка оператора сложения
+		public static TOtr operator +(TOtr ImpliedObject, TOtr Otr)
+		{
+			ImpliedObject.x2 = Otr.getX2() - (Otr.getX1() - ImpliedObject.x2);
+			ImpliedObject.y2 = Otr.getY2() - (Otr.getY1() - ImpliedObject.y2);
+			ImpliedObject.L = Math.Sqrt((ImpliedObject.x2 - ImpliedObject.x1) * (ImpliedObject.x2 - ImpliedObject.x1) + (ImpliedObject.y2 - ImpliedObject.y1) * (ImpliedObject.y2 - ImpliedObject.y1));
+			return ImpliedObject; //возвращаем результат как указатель на самого себя
+		}
+
+		public void ShowOtr()
+		{
+			Console.Write("Параметры отрезка:");
+			Console.Write("\n");
+			Console.Write("x1 =");
+			Console.Write(x1);
+			Console.Write("\n");
+			Console.Write("y1 =");
+			Console.Write(y1);
+			Console.Write("\n");
+			Console.Write("x2 =");
+			Console.Write(x2);
+			Console.Write("\n");
+			Console.Write("y2 =");
+			Console.Write(y2);
+			Console.Write("\n");
+			Console.Write("L =");
+			Console.Write(L);
+			Console.Write("\n");
+		}
+
+		internal void CopyFrom(TOtr otr)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public static class GlobalMembers
+	{
+		static extern bool SetConsoleOutputCP(uint wCodePageID);
+		static extern bool SetConsoleCP(uint wCodePageID);
+		//=========================================================
+		static void Main(string[] args)
+		{
+			SetConsoleOutputCP(1251);
+			SetConsoleCP(1251);
+
+			TOtr L1 = new TOtr();
+			TOtr L2 = new TOtr();
+			TOtr L3 = new TOtr();
+
+			L1 = new TOtr(2.0, 1.0, 9.0, 4.0);
+			L2 = new TOtr(10.0, 6.0, 13.0, 14.0);
+			L3 = new TOtr(L2);
+
+
+			Console.Write("Отрезки до всех операций");
+			Console.Write("\n");
+			L1.ShowOtr();
+			L2.ShowOtr();
+			L3.ShowOtr();
+
+
+			//увеличить отрезок L3 в 2 раза
+			Console.Write("увеличить отрезок L3 в 2 раза");
+			Console.Write("\n");
+			L3.ShowOtr(); //до
+						  //ORIGINAL LINE: L3 = L3 * 2;
+			L3.CopyFrom(L3 * 2); //используем сами объекты, а не указатели на них
+			L3.ShowOtr(); //после
+
+			//сложить отрезки L3 и L2, результат поместить в отрезок L1
+			Console.Write("сложить отрезки L3 и L2, результат поместить в отрезок L1");
+			Console.Write("\n");
+			L1.ShowOtr(); //до
+						  //ORIGINAL LINE: L1 = L3 + L2;
+			L1.CopyFrom(L3 + L2);
+			L1.ShowOtr(); //после
+
+			Console.ReadKey();
+
+		}
+	}
+}

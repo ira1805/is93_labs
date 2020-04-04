@@ -1,0 +1,150 @@
+// lab4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//Sokolnytska Ann, IS-93
+
+#include <iostream>
+#include <windows.h>
+#include <math.h>
+
+using namespace std;
+
+
+class TOtr
+{
+private:
+    double x1;
+    double y1;
+    double x2;
+    double y2;
+    double L;
+
+public:
+    TOtr() {};
+    TOtr(double x1init, double y1init, double x2init, double y2init);
+    TOtr(TOtr* Otr);
+    double getLength();
+    double getX1();
+    double getX2();
+    double getY1();
+    double getY2();
+    TOtr operator*(double m);
+    TOtr operator+(TOtr Otr);
+    void ShowOtr();
+};
+
+
+TOtr::TOtr(double x1init, double y1init, double x2init, double y2init)
+{
+    x1 = x1init;
+    y1 = y1init;
+    x2 = x2init;
+    y2 = y2init;
+    L = 0;
+}
+
+
+TOtr::TOtr(TOtr* Otr)
+{
+    x1 = Otr->getX1();
+    y1 = Otr->getY1();
+    x2 = Otr->getX2();
+    y2 = Otr->getY2();
+    L = Otr->getLength();
+}
+
+
+double TOtr::getLength()
+{
+    L = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    return L;
+}
+
+
+double TOtr::getX1()
+{
+    return x1;
+}
+
+
+double TOtr::getX2()
+{
+    return x2;
+}
+
+double TOtr::getY1()
+{
+    return y1;
+}
+
+double TOtr::getY2()
+{
+    return y2;
+}
+
+//перегрузка оператора умножения
+TOtr TOtr::operator*(double m)
+{
+    double a = atan((y2 - y1) / (x2 - x1));
+    x2 = L * m * cos(a) + x1;
+    y2 = L * m * sin(a) + y1;
+    L = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    return this; //возвращаем результат как указатель на самого себя
+}
+
+
+//перегрузка оператора сложения
+TOtr TOtr::operator+(TOtr Otr)
+{
+    x2 = Otr.getX2() - (Otr.getX1() - x2);
+    y2 = Otr.getY2() - (Otr.getY1() - y2);
+    L = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    return this; //возвращаем результат как указатель на самого себя
+}
+
+
+void TOtr::ShowOtr()
+{
+    cout << "Параметры отрезка:" << endl;
+    cout << "x1 =" << x1 << endl;
+    cout << "y1 =" << y1 << endl;
+    cout << "x2 =" << x2 << endl;
+    cout << "y2 =" << y2 << endl;
+    cout << "L =" << L << endl;
+}
+
+
+
+//=========================================================
+int main()
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
+    TOtr L1;
+    TOtr L2;
+    TOtr L3;
+
+    L1 = new TOtr(2.0, 1.0, 9.0, 4.0);
+    L2 = new TOtr(10.0, 6.0, 13.0, 14.0);
+    L3 = new TOtr(&L2);
+
+
+    cout << "Отрезки до всех операций" << endl;
+    L1.ShowOtr();
+    L2.ShowOtr();
+    L3.ShowOtr();
+
+
+    //увеличить отрезок L3 в 2 раза
+    cout << "увеличить отрезок L3 в 2 раза" << endl;
+    L3.ShowOtr(); //до
+    L3 = L3 * 2; //используем сами объекты, а не указатели на них
+    L3.ShowOtr(); //после
+
+    //сложить отрезки L3 и L2, результат поместить в отрезок L1
+    cout << "сложить отрезки L3 и L2, результат поместить в отрезок L1" << endl;
+    L1.ShowOtr(); //до
+    L1 = L3 + L2;
+    L1.ShowOtr(); //после
+
+    system("pause");
+}
