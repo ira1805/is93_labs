@@ -21,10 +21,10 @@ namespace Лабораторная_работа__5_2_
                 s[i] = s2[i];
             }
             Str obj1 = new Symbols(s);
-            s = obj1.GetString();
+            s = obj1.Change();
             Console.WriteLine(s);
             obj1 = new Noumbers(s);
-            s = obj1.GetString();
+            s = obj1.Change();
             Console.WriteLine(s);
             Console.ReadKey();
         }
