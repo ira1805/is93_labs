@@ -20,12 +20,15 @@ namespace Лабораторная_работа__5_2_
             {
                 s[i] = s2[i];
             }
+            Console.WriteLine($"Old lenght {s.Length}");
             Str obj1 = new Symbols(s);
             s = obj1.Change();
             Console.WriteLine(s);
+            Console.WriteLine($"New lenght {obj1.length(s)}");
             obj1 = new Noumbers(s);
             s = obj1.Change();
             Console.WriteLine(s);
+            Console.WriteLine($"New lenght {obj1.length(s)}");
             Console.ReadKey();
         }
     }

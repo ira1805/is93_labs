@@ -52,6 +52,7 @@ namespace Strings
                 if(s3[i]=='\0')
                 {
                     k = i;
+                    break;
                 }
             }
             this.s = new char[k];
@@ -103,6 +104,7 @@ namespace Strings
                 if (s3[i] == '\0')
                 {
                     k = i;
+                    break;
                 }
             }
             this.s = new char[k];
