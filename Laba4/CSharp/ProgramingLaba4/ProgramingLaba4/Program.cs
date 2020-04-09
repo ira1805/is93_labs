@@ -18,7 +18,7 @@ namespace ProgramingLaba4
 
         public Raw(Raw input)
         { // Copy Constructor
-            this.raws = input.raws;
+            raws = new List<string>(input.raws);
         }
 
         public int getLength()
@@ -38,9 +38,9 @@ namespace ProgramingLaba4
 
         public static Raw operator +(Raw left_val, Raw right_val)
         {
-            Raw result = left_val;
+            Raw result = new Raw(left_val);
 
-            for (int i = 0; i < right_val.getLength(); i++)
+            for (int i = 0; i < right_val.raws.Count; i++)
                 result.raws.Add(right_val.raws[i]);
 
             return result;
@@ -48,15 +48,16 @@ namespace ProgramingLaba4
 
         public static Raw operator -(Raw value, char symbol)
         {
-            Raw result = new Raw();
-
             for (int i = 0; i < value.raws.Count; i++)
-                value.raws[i].TrimEnd(symbol);
+                for (int j = 0; j < value.raws[i].Length; j++)
+                {
+                    value.raws[i] = value.raws[i][j] == symbol ? value.raws[i].Remove(j, 1) : value.raws[i];
+                    j = value.raws[i][j] == symbol ? j-- : j;
+                    
+                }
 
 
-            result = value;
-
-            return result;
+            return value;
         }
     };
 
@@ -66,8 +67,7 @@ namespace ProgramingLaba4
         {
             Console.WriteLine("IS-93 Shershun Maksim, 13 variant");
 
-            string input = "";
-            int rawsAmount = 0;
+            string input;
 
             List<string> raws = new List<string>();
             Console.Write("Enter amount of raws: ");
@@ -101,6 +101,8 @@ namespace ProgramingLaba4
             {
                 Console.Write(raw + " ");
             }
+
+            Console.ReadKey();
         }
     }
 }
