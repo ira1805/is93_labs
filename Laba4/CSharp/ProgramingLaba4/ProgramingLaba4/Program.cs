@@ -51,9 +51,11 @@ namespace ProgramingLaba4
             for (int i = 0; i < value.raws.Count; i++)
                 for (int j = 0; j < value.raws[i].Length; j++)
                 {
-                    value.raws[i] = value.raws[i][j] == symbol ? value.raws[i].Remove(j, 1) : value.raws[i];
-                    j = value.raws[i][j] == symbol ? j-- : j;
-                    
+                    if (value.raws[i][j] == symbol)
+                    {
+                        value.raws[i] = value.raws[i].Remove(j, 1);
+                        j--;
+                    }
                 }
 
 
