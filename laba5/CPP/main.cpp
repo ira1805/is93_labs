@@ -22,6 +22,7 @@ string printVectorVectorInt(vector<vector<int>> userVector){
 
 int main() {
     // 1 task
+    cout << "IS-93 Kravchenko Olena, 12 variant" << endl;
     vector<vector<int>> userCoordinates1 = {{-3, 4},{2, 4},{4, -1},{-5, -1}};
     vector<vector<int>> userCoordinates2 = {{4, 2},{26, 1},{6, -4},{-4, -4}};  // Wrong coordinates test(no parallel sides)
     vector<vector<int>> userCoordinates3 = {{2, 2},{2, -3},{-3, -3},{-3, 3}};
