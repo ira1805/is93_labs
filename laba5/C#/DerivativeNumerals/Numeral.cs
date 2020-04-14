@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using BaseString;
+﻿using BaseString;
 namespace DerivativeNumerals 
 {
     public class Numeral : ModString
