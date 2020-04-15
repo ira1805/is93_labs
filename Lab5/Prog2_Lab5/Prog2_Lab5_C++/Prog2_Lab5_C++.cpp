@@ -25,7 +25,12 @@ void main()
     printf("Площа квадратy A: \n");
     cout << A.Area() << '\n' << '\n';
 
-    printf("Створений квадрат A: \n");
+    printf("Створений рядок D: \n");
+    Symbols D("dshjtdagshs");
+    WriteOut(D);
+    cout << '\n';
+
+    printf("Створена лiнiя символів В: \n");
     Symbols B("*$£&)(_*^^#");
     WriteOut(B);
     cout << '\n';
@@ -35,7 +40,7 @@ void main()
     printf("Кiлькiсть символу *: \n");
     cout << B.Count() << '\n' << '\n';
 
-    printf("Створений квадрат A: \n");
+    printf("Створена лiнiя великих літер С: \n");
     LargeLetters C("ФПВЕНРВТУЕВ");
     WriteOut(C);
     cout << '\n';

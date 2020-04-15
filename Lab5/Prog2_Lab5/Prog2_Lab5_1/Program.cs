@@ -21,7 +21,11 @@ namespace Prog2_Lab5_1
             Console.WriteLine(A.Area());
             Console.WriteLine();
 
-            Console.WriteLine("Створений квадрат A:");
+            Console.WriteLine("Створений рядок D:");
+            Symbols D = new Symbols("dahfshsfhs");
+            WriteOut(D);
+
+            Console.WriteLine("Створена лiнiя символів В:");
             Symbols B = new Symbols("*$£&)(_*^^#");
             WriteOut(B);
 
@@ -31,7 +35,7 @@ namespace Prog2_Lab5_1
             Console.WriteLine(B.Count());
             Console.WriteLine();
 
-            Console.WriteLine("Створений квадрат A:");
+            Console.WriteLine("Створена лiнiя великих літер С:");
             LargeLetters C = new LargeLetters("ФПВЕНРВТУЕВ");
             WriteOut(C);
 
