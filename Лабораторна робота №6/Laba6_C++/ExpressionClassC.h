@@ -33,12 +33,12 @@ public: double Value()//Method for output of value our Expression
             if (sqrt(41 - d) - b * a + c == 0)//If denominator = 0 i show massage with exception
             {
                 throw "Expression have a zero the denominator!";//I show message with exception
-                exit(1);//Close the window and exit from programm
             }
     }
     catch (const char * a)
     {
         MessageBoxA(GetActiveWindow(), a, "Error message", MB_ICONERROR);//Output message box with info
+        exit(1);//Close the window and exit from programm
     }
     return(((a * b / 4.0) - 1) / (sqrt(41 - d) - b * a + c));//Else, i return value of expression
 }

@@ -1,5 +1,7 @@
 #include "Library.h"
 #include<vector>
+#include <windows.h>
+#include<iostream>
 namespace New_Library
 {
     Library::Library()
@@ -24,15 +26,27 @@ namespace New_Library
     {
         this->str.push_back('\0');
         length = 0;
-    }//Оператор для ділення рядка//Ініціалізація за замовченням
+    }//Ініціалізація за замовченням
     std::vector<char> Library::GetStr()
     {
         return this->str;
-    }//Оператор для додавання двох рядків//Метод для повернення рядка
+    }//Метод для повернення рядка
     Library Library::operator +(Library right_val)
     {
         Library rez;
         rez.str = this->str;
+        try
+        {
+            if (right_val.length == 0)
+            {
+                throw "String has got null value!!!";
+            }
+        }
+        catch (const char* c)
+        {
+            MessageBoxA(GetActiveWindow(), c, "Error message", MB_ICONERROR);//Output message box with info
+            exit(1);
+        }
         for (int i = 0; i < right_val.length; i++)
         {
             rez.str.push_back(right_val.str[i]);
@@ -42,6 +56,18 @@ namespace New_Library
     }//Оператор для додавання двох рядків
     Library Library::operator /(int b)
     {
+        try
+        {
+            if (b==0)
+            {
+                throw "Value is null of argument in denominator!!!";
+            }
+        }
+        catch (const char* c)
+        {
+            MessageBoxA(GetActiveWindow(), c, "Error message", MB_ICONERROR);//Output message box with info
+            exit(1);
+        }
         Library rez;
         std::vector<char> s(0);
         for (int i = 0; i < this->length; i++)

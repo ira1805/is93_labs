@@ -12,14 +12,16 @@ namespace C_Sharp
         static void Main(string[] args)
         {
             string s;
+            Console.WriteLine("Samilenko Oleksandr IS-93 ");
             Console.Write("Input the string: ");
             s = Console.ReadLine();
             Class1 R1 = new Class1();
             Class1 R2 = new Class1(s);
             Class1 R3 = new Class1(R2);
             R2 = R2 / 2;
+            Class1 R4 = new Class1("");
             Console.WriteLine(R2.GetStr());
-            R1 = R2 + R3;
+            R1 = R2 + R4;
             Console.WriteLine(R1.GetStr());
             Console.ReadKey();
         }

@@ -40,12 +40,24 @@ namespace ClassLibrary_forMainProgram
         public static Class1 operator +(Class1 left_val,Class1 right_v)//Оператор для додавання двох рядків
         {
             Class1 rez = new Class1();
+            if (right_v.str.Length==0 ||left_val.str.Length==0||right_v.str==null || left_val.str==null)
+            {
+                throw new ArgumentNullException("String has got null value!!!");
+            }
             rez.str = left_val.str + right_v.str;
             return rez;
         }
         public static Class1 operator /(Class1 op,int b)//Оператор для ділення рядка
         {
             string s="";
+            if(b==0)
+            {
+                throw new ArgumentNullException("We have got null in the denominator!!!");
+            }
+            if(op.str.Length==0 || op.str==null)
+            {
+                throw new ArgumentNullException("String has got null value!!!");
+            }
             for(int i=0;i<op.length;i++)
             {
                 if(i%b==0)

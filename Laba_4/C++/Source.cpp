@@ -6,6 +6,7 @@ using namespace New_Library;
 
 int main()
 {
+	cout << "Samilenko Oleksandr IS-93\n";
 	cout << "Input the string: ";
 	vector<char>arr;
 	for (int j = 0; j < 1000; j++)
@@ -29,6 +30,8 @@ int main()
 		cout << R2.GetStr()[i];
 	}
 	cout << endl;
+	//vector<char> c2;
+	//Library R4(c2);
 	R1 = R2 + R3;
 	for (int i = 0; i < R1.length; i++)
 	{
