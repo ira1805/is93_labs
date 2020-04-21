@@ -17,6 +17,7 @@ namespace Лабораторна_робота__6
             obj[2] = new ExpressionClass(4, 2, 5, 10);
             obj[3] = new ExpressionClass(1, 41, 12, 20);
             obj[4] = new ExpressionClass(4, 13, 3, 15);
+            Console.WriteLine("Samilenko Oleksandr, IS-93");
             for (int i = 0; i < 5; i++)
             {
                 Console.WriteLine($"Value {i + 1} = {Math.Round(obj[i].Value(),5)}");//Output value each object

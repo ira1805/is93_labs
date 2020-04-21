@@ -5,6 +5,7 @@
 using namespace std;
 int main()
 {
+    cout << "Samilenko Oleksandr IS-93\n";
     ExpressionClassC *obj[5];// Make arrg out objects
     obj[0] = new ExpressionClassC(1, 2, 3, 20);
     obj[1] = new ExpressionClassC(5, 2, 3, 2);
