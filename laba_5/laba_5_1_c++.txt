@@ -1,0 +1,99 @@
+//лаб раб 5 - 1
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <iostream>
+#include <math.h>
+#include <string.h>
+#include <cstring>
+#include <windows.h>
+
+using namespace std;
+
+#define maxlen 100   //задать максимальную длину строки
+
+//объявление класса
+class TStr
+{
+protected:
+    char stroka[maxlen];  //значение строки
+
+public:
+    TStr(char* str_init);  //конструктор с параметром
+    int getLenght();       //возвращает длину строки
+};
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+//реализация методов класса TStr
+//конструктор с параметром
+TStr::TStr(char* str_init)
+{
+    strcpy(stroka, str_init);
+}
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+//возвращает длину строки
+int TStr::getLenght()
+{
+    return strlen(stroka);
+}
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+//объявление класса-наследника
+class TSymbolStr : public TStr
+{
+public:
+    TSymbolStr(char* str_init); //конструктор с параметром
+    void Replace(char old_symbol, char new_symbol);    //заменить символ на другой
+    char* getString();     //получает значение строки
+};
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+//реализация методов класса TSymbolStr
+TSymbolStr::TSymbolStr(char* str_init) : TStr(str_init)
+{
+    //если ничего дополнительного делать не надо
+}
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+//заменить символ на другой
+void TSymbolStr::Replace(char old_symbol, char new_symbol)
+{
+    //1. организуем   цикл по строке-полю класса – stroka (который унаследован)
+    //2. ищем заданный символ − old_symbol
+    int pos = 0;  //установить начальную позицию строки в 0
+    int len = getLenght(); //получить длину строки
+
+    while (pos != len - 1)   //цикл по всем символам строки
+    {
+        if (stroka[pos] == old_symbol)  //если символы совпали, 
+            stroka[pos] = new_symbol;   //то заменить на новый
+        pos++;
+    }
+}
+
+//−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+char* TSymbolStr::getString()     //получает значение строки
+{
+    return stroka;
+}
+//-----------------------------------------------
+
+//главная программа
+int main()
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
+    //в основной программе создать объект класса-наследника
+    //можно статически, можно динамически
+    char tmp[] = "===x***x===";
+    TSymbolStr S(tmp); //задать строку
+    cout << "Строка: " << S.getString() << endl;  //вывести строку
+    cout << "Длина строки: " << S.getLenght() << endl; //вычислить и вывести длину строки
+    cout << "Замена символа 'x' на 'W'" << endl;
+    S.Replace('x', 'w'); //заменить символ ‘x’ на символ  ‘w’
+    cout << "Результирующая строка: " << S.getString() << endl;  //снова вывести строку
+
+    system("pause");
+}
