@@ -4,15 +4,16 @@
 // Метод для перевірки правильності введених операнд, виконується при введені даних та розрахунку значення виразу.
 void Expression::Check()
 {
-    // Перевірка кореня
-    if (isnan(sqrt(41 - d))) { throw 1; }
-    // Перевірка дільника
-    else if ((sqrt(41 - d) - (b * a) + c) == 0) { throw 2; }
-    return;
-    //catch (int errIndex) {
-    //    if (errIndex == 1) { printf("Квадратний корiнь вiд'ємного числа\n"); }
-    //    else if (errIndex == 2) { printf("Дiльник дорiвнює нулю\n"); }
-    //}
+    try {
+        // Перевірка кореня
+        if (isnan(sqrt(41 - d))) { throw "Квадратний корiнь вiд'ємного числа"; }
+        // Перевірка дільника
+        else if ((sqrt(41 - d) - (b * a) + c) == 0) { throw "Дiльник дорiвнює нулю"; }
+        return;
+    }
+    catch (char* errMessage) {
+        throw std::runtime_error(errMessage);
+    }
 }
 
 // Метод для розрахунку значення виразу
@@ -40,11 +41,18 @@ Expression::Expression(double aInput, double bInput, double cInput, double dInpu
 // Перевіряє правильність операнд при введенні
 void Expression::Change(char index, double value)
 {
-    if (index == 'a') { a = value; }
-    else if (index == 'b') { b = value; }
-    else if (index == 'c') { c = value; }
-    else if (index == 'd') { d = value; }
-    else { throw "Символ не відповідає жодному з операнд виразу."; }
+    try {
+        switch (index) {
+        case 'a': a = value; break;
+        case 'b': b = value; break;
+        case 'c': c = value; break;
+        case 'd': d = value; break;
+        default: throw "Символ не відповідає жодному з операнд виразу."; break;
+        }
+    }
+    catch (char* errMessage) {
+        throw std::invalid_argument(errMessage);
+    }
 
     // Викликається перевірка правильності операнд
     Check();

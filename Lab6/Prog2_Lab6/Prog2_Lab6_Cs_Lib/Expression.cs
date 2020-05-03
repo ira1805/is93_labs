@@ -21,11 +21,11 @@ namespace Prog2_Lab6_Cs_Lib
 
         // Метод для розрахунку значення виразу
         public double Calculate()
-        {
+        { 
             // Викликається перевірка правильності операнд
             Check();
             // Розраховується значення виразу
-            return ((a * b / 4) - 1) / (Math.Sqrt(41 - d) - (b * a) + c);
+            return((a * b / 4) - 1) / (Math.Sqrt(41 - d) - (b * a) + c);
         }
 
         // Конструктор

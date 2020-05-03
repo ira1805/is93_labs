@@ -37,14 +37,30 @@ Triangle::Triangle(int (*input)[2]) {
 		}
 	}
 
-	if ((points[0][0] * points[1][1] == points[0][1] * points[1][0]) && (points[0][0] * points[2][1] == points[0][1] * points[2][0]))
-	{ throw "Точки трикутника знаходяться на одній прямій"; }
-
+	try {
+		if ((points[0][0] * points[1][1] == points[0][1] * points[1][0]) && (points[0][0] * points[2][1] == points[0][1] * points[2][0]))
+		{
+			throw "Точки трикутника знаходяться на одній прямій";
+		}
+	}
+	catch (char* errMessage) {
+		throw std::invalid_argument(errMessage);
+	}
 }
 
 // Конструктор копіювання
 Triangle::Triangle(Triangle& input) {
 	points = input.Get();
+
+	try {
+		if ((points[0][0] * points[1][1] == points[0][1] * points[1][0]) && (points[0][0] * points[2][1] == points[0][1] * points[2][0]))
+		{
+			throw "Точки трикутника знаходяться на одній прямій";
+		}
+	}
+	catch (char* errMessage) {
+		throw std::invalid_argument(errMessage);
+	}
 }
 
 // Функція обчислення відстанні між точками трикутника

@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Ukrainian");
+    cout << "Стеблянко Олександр, Лабораторна 6, Завдання 9 \n \n";
+
     Expression A[3] = {
                 Expression(2, 5, 3, 40),
                 Expression(1, 0, 0, 5),
