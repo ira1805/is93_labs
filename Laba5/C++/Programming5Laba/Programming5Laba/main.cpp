@@ -48,16 +48,12 @@ class Figura {
 public:
     Figura() {};
 protected:
-    virtual double perimeter() {
-        return 0;
-    }
+    virtual double perimeter(void) = 0;//pure virtual function
     
-    virtual double square() {
-        return 0;
-    }
+    virtual double square(void) = 0;//pure virtual function
 };
 
-class Trapeze: Figura {
+class Trapeze: protected Figura {
 public:
     double a = 0;
     double b = 0;
@@ -86,6 +82,7 @@ public:
 class Circle: Figura {
 public:
     double radius = 0;
+    
     Circle() {};
     Circle(double radius) {
         this->radius = radius;

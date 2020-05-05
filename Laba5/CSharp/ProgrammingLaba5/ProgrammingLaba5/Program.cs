@@ -40,17 +40,15 @@ namespace ProgrammingLaba5
 
     //MARK: 2 Task
 
-    class Figura
-{
+    abstract class Figura
+    {
         public Figura() { }
         protected virtual double perimeter()
         {
-            return 0;
         }
 
         protected virtual double square()
-        { 
-            return 0;
+        {
         }
     };
 
