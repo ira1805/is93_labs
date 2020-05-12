@@ -13,6 +13,7 @@ namespace Laba7
         
         public static void Main(string[] args)
         {
+            Console.WriteLine("IS-93 Kravchenko Olena, 12 variant");
             // Task 2
             string test1 = "Hello world!";  // 3 - 'l'
             string test2 = "Flood door room master";  // 6 - 'o'
