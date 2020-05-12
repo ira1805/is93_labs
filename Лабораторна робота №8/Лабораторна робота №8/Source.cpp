@@ -1,19 +1,7 @@
 #include<iostream>
 #include<string>
 using namespace std;
-bool FindLitteral(string s)//Method for find litteral
-{
-	bool flag = false;
-	for (int i = 0; i < s.length(); i++)
-	{
-		if (isalpha(s[i])==2)
-		{
-			flag = true;
-			break;
-		}
-	}
-	return flag;
-}
+bool FindLitteral(string s);//Method for find litteral
 int main()
 {
 	cout << "Samilenko Oleksandr, IS-93\n";
@@ -32,4 +20,17 @@ int main()
 	}
 	system("pause");
 	return 0;
+}
+bool FindLitteral(string s)//Method for find litteral
+{
+	bool flag = false;
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (isalpha(s[i]) == 2)
+		{
+			flag = true;
+			break;
+		}
+	}
+	return flag;
 }

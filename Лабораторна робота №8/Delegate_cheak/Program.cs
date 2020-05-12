@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Events;
 
 namespace Delegate_cheak
 {
@@ -36,7 +37,17 @@ namespace Delegate_cheak
             {
                 Console.WriteLine("String has not a litteral!!!");
             }
-            Console.ReadKey();
+
+            DelegateClear deleg = ClearAll;//Add new method to delegat, with send to class
+            Class1 value = new Class1("aasdasdsa", deleg);//Add new object of Class1 is class
+            value.AddNewElement(21);//Add new value to line
+            value.DeleteElement();//Delete first value in line
+            value.RemoveAll();//Clear all line
+            Console.ReadKey();// Stoping of a screen!
+        }
+        public static void ClearAll()
+        {
+            Console.WriteLine("Line was clear!!!");
         }
     }
 }
