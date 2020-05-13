@@ -47,8 +47,16 @@ namespace Events
             {
                 throw new ArgumentNullException("Element has a value of value`s null!!");
             }
-            list[list.Count() - 1] = s;
-            list.Add(null);
+            if(list.Count()==0)
+            {
+                list.Add(s);//Add first element
+                list.Add(null);//Add second of null value
+            }
+            else
+            {
+                list[list.Count() - 1] = s;
+                list.Add(null);
+            }
         }
         public void DeleteElement()//Delete first element in the line;
         {
@@ -59,6 +67,13 @@ namespace Events
                 {
                     list.RemoveAt(0);
                     ClearEvent?.Invoke();//If ClearEvent !=NULL  ->  ClearEvent();
+                }
+                else
+                {
+                    if(list.Count()==0)
+                    {
+                        ClearEvent?.Invoke();//If ClearEvent !=NULL  ->  ClearEvent();
+                    }
                 }
             }
             else
