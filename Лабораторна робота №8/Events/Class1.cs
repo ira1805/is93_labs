@@ -16,6 +16,10 @@ namespace Events
             list = new List<object>();
             ClearEvent += Event;
         }
+        public Class1()//Make first construction without event
+        {
+            list = new List<object>();
+        }
         public Class1(object s, DelegateClear Event)//Make second construction
         {
             if(s==null)
@@ -46,7 +50,7 @@ namespace Events
             list[list.Count() - 1] = s;
             list.Add(null);
         }
-        public void DeleteElement()//Delete first element in the line
+        public void DeleteElement()//Delete first element in the line;
         {
             if (list.Count() != 0)
             {
@@ -54,24 +58,18 @@ namespace Events
                 if (list.Count() == 1 && list[0] == null)
                 {
                     list.RemoveAt(0);
-                    ClearEvent();
+                    ClearEvent?.Invoke();//If ClearEvent !=NULL  ->  ClearEvent();
                 }
             }
             else
             {
-                if (list.Count() == 0 && ClearEvent != null)
-                {
-                    ClearEvent();
-                }
+                ClearEvent?.Invoke();//If ClearEvent !=NULL  ->  ClearEvent();
             }
         }
-        public void RemoveAll()//Delete all element in the line
+        public void RemoveAll()//Delete all element in the line;
         {
             list.Clear();
-            if(ClearEvent!=null)
-            {
-                ClearEvent();
-            }
+            ClearEvent?.Invoke();//If ClearEvent !=NULL  ->  ClearEvent();
         }
     }
 }
