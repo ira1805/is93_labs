@@ -22,7 +22,7 @@ namespace ProgrammingLaba6
         public double C { get => c; set => c = value; }
 
         public double Result() {
-            return Dividing((8 * log10(b - 1) - c), (a * 2 + Dividing(b, c)));
+            return dividing((8 * log10(b - 1) - c), (a * 2 + dividing(b, c)));
         }
 
         public double log10(double a) {
@@ -40,7 +40,7 @@ namespace ProgrammingLaba6
             return res;
         }
 
-        private double Dividing(double a, double b) {
+        private double dividing(double a, double b) {
             double res = 0;
 
             try {
