@@ -1,0 +1,76 @@
+/*public unsafe struct Node
+        {
+			public Node(short element)
+			{
+				this.element = element;
+				count = 1;
+				next = null;
+			}
+			public short element;
+            public int count;
+            public Node* next;
+        }*/
+		/*public static unsafe Node* CreateNode(short NewElement)
+		{
+			Node a = new Node();
+			Node* NewNode = &a;
+			NewNode->element = NewElement;
+			NewNode->count = 1;
+			NewNode->next = null;
+			return NewNode;
+		}
+		public static unsafe void AddLastElement(Node* head, short NewNode)
+		{
+				Node a = new Node(NewNode);
+				Node* NEWV = &a;
+				Node* pt = head;
+				if (head == null)
+				{
+					head = NEWV;
+					return;
+				}
+				while (pt->next != null)
+				{
+					pt = pt->next;
+				}
+				NEWV->next = pt->next;
+				pt->next = NEWV;
+		}
+		public static unsafe int CountMultiples(Node* head)
+		{
+				Node* re = head;
+				int k = 0;
+				while (re != null)
+				{
+					if (re->element % 4 == 0)
+					{
+						k++;
+					}
+					re = re->next;
+				}
+				return k;
+		}
+		public static unsafe void Switch(Node* head)
+		{
+			int k = 0;
+			Node* re = head;
+			while (re!=null)
+			{
+				if (k % 2 == 0)
+				{
+					re->element = 0;
+				}
+				k++;
+				re = re->next;
+			}
+		}
+		public static unsafe void OutPutList(Node* head)
+		{
+			Node* new_ref = head;
+			while (new_ref!=null)
+			{
+				Console.Write(new_ref->element);
+				new_ref = new_ref->next;
+			}
+			Console.WriteLine();
+		}*/
